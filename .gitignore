@@ -1,6 +1,9 @@
 # History files
 .Rhistory
 
+# Project Data
+getdatacourse/Project/Data/
+
 # R data files from past sessions
 .Rdata
 
