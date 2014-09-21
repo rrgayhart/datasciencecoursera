@@ -30,14 +30,28 @@ construct_full_test_dataset <- function(variable_names) {
   return(cbind(test_feature_data, test_subject_data, test_label_data))
 }
 
+# Extracts only the measurements on the mean and standard deviation for each measurement.
+STDColNums <- grep("std+", names(full_data_set))
+MeanColNums <- grep("mean+", names(full_data_set))
+indices = c(STDColNums, MeanColNums)
+extractedData <- full_data_set[,indices]
 
-# Extracts only the measurements on the mean and standard deviation for each measurement. 
 
 # Uses descriptive activity names to name the activities in the data set
+Activity <- full_data_set$label
+Subject <- full_data_set$subject
+activityMatrix <- c('1'='WALKING','2'='WALKING_UPSTAIRS','3'='WALKING_DOWNSTAIRS','4'='SITTING','5'='STANDING', '6'='LAYING')
+for (n in names(activityMatrix)) {
+  activity[as.character(activity) == n] <-activityMatrix[n]
+}
+extractedData <- cbind(extractedData, Activity)
+extractedData <- cbind(extractedData, Subject)
 
-# Appropriately labels the data set with descriptive variable names. 
+# Appropriately labels the data set with descriptive variable names.
+names(extractedData) <- gsub(pattern="\\(\\)", "", names(extractedData))
 
 # From the data set in step 4, creates a second, independent tidy data set 
 # with the average of each variable for each activity and each subject.
 
-#     write.table(row.name=FALSE)
+tidyDataSet <- aggregate(extractedData, by=list(Activity = extractedData$Activity, Subject = extractedData$Subject), FUN=mean, na.rm=TRUE)
+tidyDataSet
