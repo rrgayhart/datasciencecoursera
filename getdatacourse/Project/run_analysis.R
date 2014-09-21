@@ -54,4 +54,6 @@ names(extractedData) <- gsub(pattern="\\(\\)", "", names(extractedData))
 # with the average of each variable for each activity and each subject.
 
 tidyDataSet <- aggregate(extractedData, by=list(Activity = extractedData$Activity, Subject = extractedData$Subject), FUN=mean, na.rm=TRUE)
+write.table(tidyDataSet, 'tidydata.txt', row.name=FALSE)
 tidyDataSet
+
