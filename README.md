@@ -5,7 +5,7 @@
 ###Courses included in the track
 
 1. [The Data Scientist's Toolbox](https://github.com/rrgayhart/datasciencecoursera/blob/master/certificates/TheDataScientistsToolboxCertificate.pdf)
-2. R Programming
+2. [R Programming](https://github.com/rrgayhart/datasciencecoursera/blob/master/certificates/RProgrammingCertificate.pdf)
 3. Getting and Cleaning Data
 4. Exploratory Data Analysis
 5. Reproducible Research
